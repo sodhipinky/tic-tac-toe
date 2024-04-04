@@ -67,6 +67,7 @@ function Board({ xIsNext, squares, onPlay, onRestart }) {
     xIsNext: PropTypes.bool,
     squares: PropTypes.array,
     onPlay: PropTypes.func,
+    onRestart: PropTypes.func,
   };
 
   const winner = calculateWinner(squares);
