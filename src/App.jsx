@@ -44,5 +44,6 @@ function Square({value, onSquareClick}) {
 
 Square.propTypes = {
   value: PropTypes.any,
+  onSquareClick: PropTypes.func,
 };
 export default Board;
