@@ -7,12 +7,15 @@ function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const currentSquares = history[history.length - 1];
 
-  function handlePlay(nextSquares) {}
+  function handlePlay(nextSquares) {
+    setHistory([...history, nextSquares]);
+    setXIsNext(!xIsNext);
+  }
 
   return (
     <div className="game">
       <div className="game-board">
-        <Board />
+        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
         <ol>{/*TODO*/}</ol>
@@ -22,25 +25,26 @@ function Game() {
 
 }
 
-function Board() {
-
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
+function Board({ xIsNext, squares, onPlay }) {
 
   function handleClick(index) {
     if (squares[index] || calculateWinner(squares)) {
       return;
     }
-    const newSquares = squares.slice();
+    const nextSquares = squares.slice();
     if (xIsNext) {
-      newSquares[index] = 'X';
+      nextSquares[index] = 'X';
     }
     else {
-      newSquares[index] = 'O';
+      nextSquares[index] = 'O';
     }
-    setSquares(newSquares);
-    setXIsNext(!xIsNext);
+    onPlay(nextSquares);
   }
+  Board.propTypes = {
+    xIsNext: PropTypes.bool,
+    squares: PropTypes.array,
+    onPlay: PropTypes.func,
+  };
 
   const winner = calculateWinner(squares);
   let status;
