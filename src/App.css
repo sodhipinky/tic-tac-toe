@@ -42,3 +42,12 @@ body {
   color: palevioletred;
   font-weight: bold;
 }
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}
