@@ -62,3 +62,10 @@ body {
   border-radius: 5px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
+
+.restart {
+  margin-top: 10px;
+  width: 148px;
+  height: 25px;
+  border-radius: 5px;
+}

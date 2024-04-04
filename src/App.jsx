@@ -19,6 +19,11 @@ function Game() {
     setCurrentMove(nextMove);
   }
 
+  function restartGame() {
+    setHistory([Array(9).fill(null)]);
+    setCurrentMove(0);
+  }
+
   const moves = history.map((squares, move) => {
     const description = move > 0 ? `Go to move #${move}` : 'Go to game start';
     return (
@@ -29,19 +34,21 @@ function Game() {
   })
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+    <>
+      <div className="game">
+        <div className="game-board">
+          <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} onRestart={restartGame} />
+        </div>
+        <div className="game-info">
+          <ol>{moves}</ol>
+        </div>
       </div>
-      <div className="game-info">
-        <ol>{moves}</ol>
-      </div>
-    </div>
+    </>
   );
 
 }
 
-function Board({ xIsNext, squares, onPlay }) {
+function Board({ xIsNext, squares, onPlay, onRestart }) {
 
   function handleClick(index) {
     if (squares[index] || calculateWinner(squares)) {
@@ -88,6 +95,7 @@ function Board({ xIsNext, squares, onPlay }) {
           )
         })
       }
+      <button className='restart' onClick={onRestart}>Restart Game</button>
     </>
   )
 }
