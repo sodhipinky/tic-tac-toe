@@ -51,3 +51,14 @@ body {
 .game-info {
   margin-left: 20px;
 }
+
+.game-info ol li {
+  margin-bottom: 10px;
+}
+
+.game-info ol li button {
+  width: 200px;
+  height: 25px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+}

@@ -7,10 +7,24 @@ function Game() {
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const currentSquares = history[history.length - 1];
 
+  
   function handlePlay(nextSquares) {
     setHistory([...history, nextSquares]);
     setXIsNext(!xIsNext);
   }
+  
+  function jumpTo(nextMove) {
+    
+  }
+  
+  const moves = history.map((squares, move) => {
+    const description = move > 0 ? `Go to move #${move}` : 'Go to game start';
+    return (
+      <li key={move}>
+        <button onClick={() => jumpTo(move)}>{description}</button>
+      </li>
+    )
+  })
 
   return (
     <div className="game">
@@ -18,7 +32,7 @@ function Game() {
         <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>{/*TODO*/}</ol>
+        <ol>{ moves }</ol>
       </div>
     </div>
   );
