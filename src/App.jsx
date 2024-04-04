@@ -77,7 +77,6 @@ function Board({ xIsNext, squares, onPlay }) {
   return (
     <>
       <div className="status">{status}</div>
-
       {
         squares.map((square, index) => {
           return (
