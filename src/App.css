@@ -38,7 +38,7 @@ body {
 .status {
   margin-bottom: 10px;
   font-family: jetbrains mono;
-  font-size: x-large;
+  font-size: large;
   color: palevioletred;
   font-weight: bold;
 }
