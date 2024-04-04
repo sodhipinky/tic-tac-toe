@@ -5,9 +5,9 @@ function Board() {
 
   const [squares, setSquares] = useState(Array(9).fill(null));
 
-  function handleClick() {
+  function handleClick(index) {
     const newSquares = squares.slice();
-    newSquares[0] = 'X';
+    newSquares[index] = 'X';
     setSquares(newSquares);
   }
 
